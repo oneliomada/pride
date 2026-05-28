@@ -16,6 +16,8 @@
 body{font-family:'Nunito',sans-serif;background:#0a1628;color:#e8f4f8;max-width:480px;margin:0 auto;min-height:100vh}
 ::-webkit-scrollbar{width:0}
 input,textarea,button,select{font-family:'Nunito',sans-serif}
+
+/* AUTH */
 .auth-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
 .auth-logo{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px}.auth-logo span{color:#00f5d4}
 .auth-sub{color:#6a8fa8;font-size:14px;margin-bottom:32px;text-align:center}
@@ -28,6 +30,8 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
 .field input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 16px;color:#e8f4f8;font-size:15px;outline:none}
 .btn-primary{width:100%;background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:12px;color:#fff;padding:14px;font-weight:900;font-size:16px;cursor:pointer;margin-top:8px}
 .auth-error{color:#e74c3c;font-size:13px;margin-top:8px;text-align:center;min-height:20px}
+
+/* HEADER & NAV */
 .header{background:linear-gradient(90deg,#0d6efd,#00b4d8);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .logo{font-size:20px;font-weight:900;color:#fff}.logo span{color:#00f5d4}
 .logout-btn{background:rgba(255,255,255,.2);border:none;border-radius:8px;color:#fff;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer}
@@ -37,9 +41,13 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
 .nav-label{font-size:10px;font-weight:800}
 .body{padding:0 0 80px}
 .tab{display:none}.tab.active{display:block}
+
+/* FEED */
 .cat-bar{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;scrollbar-width:none}
 .cat-btn{background:rgba(255,255,255,.07);border:none;border-radius:20px;padding:6px 14px;color:#8ab;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
 .cat-btn.active{background:linear-gradient(90deg,#0d6efd,#00b4d8);color:#fff}
+
+/* CARD */
 .card{background:rgba(255,255,255,.05);border-radius:16px;margin:0 12px 14px;padding:16px;border:1px solid rgba(255,255,255,.08)}
 .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .card-top-left{display:flex;align-items:center;gap:10px}
@@ -50,72 +58,16 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
 .delete-btn{background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);border-radius:8px;color:#e74c3c;padding:4px 10px;font-size:12px;font-weight:800;cursor:pointer}
 .post-img{width:100%;border-radius:12px;margin:10px 0;max-height:300px;object-fit:cover}
 .post-text{font-size:14px;line-height:1.6;margin-bottom:10px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.action-btn{background:none;border:none;color:#6a8fa8;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:4px;font-weight:700}
-.action-btn.liked{color:#e74c3c}
-.comments-section{border-top:1px solid rgba(255,255,255,.06);padding-top:10px;margin-top:4px}
-.comment{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
-.comment-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px;color:#fff;flex-shrink:0}
-.comment-bubble{background:rgba(255,255,255,.07);border-radius:12px;padding:8px 12px;flex:1}
-.comment-name{font-weight:800;font-size:11px;color:#00b4d8}
-.comment-text{font-size:13px;margin-top:2px}
-.comment-input-wrap{display:flex;gap:8px;margin-top:8px}
-.comment-input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:8px 14px;color:#e8f4f8;font-size:13px;outline:none}
-.comment-send{background:linear-gradient(135deg,#0d6efd,#00b4d8);border:none;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff;flex-shrink:0}
-.post-form{background:rgba(255,255,255,.05);border-radius:16px;margin:0 12px 14px;padding:16px;border:1px solid rgba(13,110,253,.3)}
-.post-form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#e8f4f8;padding:12px;font-size:14px;resize:none;outline:none}
-.post-form select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#e8f4f8;padding:10px 12px;font-size:14px;outline:none;margin-top:8px}
-.form-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.btn-pub{background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:10px;color:#fff;padding:10px 20px;font-weight:800;cursor:pointer;font-size:14px}
-.btn-cancel{background:rgba(255,255,255,.07);border:none;border-radius:10px;color:#e8f4f8;padding:10px 16px;font-weight:800;cursor:pointer;font-size:14px}
-.btn-photo{background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.3);border-radius:10px;color:#00b4d8;padding:10px 16px;font-weight:800;cursor:pointer;font-size:14px}
-.fab{position:fixed;bottom:88px;right:20px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);border:none;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 4px 20px rgba(13,110,253,.5);z-index:200;display:flex;align-items:center;justify-content:center}
-.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 130px)}
-.ai-badge{background:rgba(13,110,253,.1);border:1px solid rgba(13,110,253,.3);border-radius:10px;padding:8px 12px;margin:8px 16px;font-size:12px;color:#00b4d8;display:flex;align-items:center;gap:8px}
-.chat-messages{flex:1;overflow-y:auto;padding:8px 16px;display:flex;flex-direction:column;gap:10px}
-.bubble{max-width:82%;padding:10px 14px;font-size:13.5px;line-height:1.6}
-.bubble.ai{align-self:flex-start;background:rgba(255,255,255,.07);border-radius:18px 18px 18px 4px;border:1px solid rgba(255,255,255,.08)}
-.bubble.user{align-self:flex-end;background:linear-gradient(135deg,#0d6efd,#00b4d8);border-radius:18px 18px 4px 18px}
-.bubble-name{font-weight:800;font-size:11px;color:#00b4d8;margin-bottom:4px}
-.chat-input{display:flex;gap:10px;padding:12px 16px;background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.06)}
-.chat-field{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:10px 16px;color:#e8f4f8;font-size:14px;outline:none}
-.send-btn{background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;flex-shrink:0;color:#fff}
-.typing span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#00b4d8;margin:0 2px;animation:bounce 1.2s infinite}
-.typing span:nth-child(2){animation-delay:.2s}
-.typing span:nth-child(3){animation-delay:.4s}
-@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
-.msg-item{background:rgba(255,255,255,.05);border-radius:14px;padding:14px;margin:0 12px 10px;display:flex;align-items:center;gap:12px;cursor:pointer;border:1px solid rgba(255,255,255,.08)}
-.msg-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff;flex-shrink:0}
-.msg-name{font-weight:800;font-size:14px}
-.msg-preview{font-size:12px;color:#6a8fa8;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
-.msg-time{font-size:11px;color:#6a8fa8;margin-left:auto;flex-shrink:0}
-.conv-header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
-.conv-messages{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:8px;height:calc(100vh - 230px)}
-.back-btn{background:none;border:none;color:#00b4d8;font-size:22px;cursor:pointer;padding:0}
-.conv-name{font-weight:900;font-size:16px}
-.conv-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;flex-shrink:0}
-.profile-wrap{padding:20px}
-.profile-top{text-align:center;margin-bottom:20px}
-.profile-avatar-big{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#fff;box-shadow:0 4px 20px rgba(13,110,253,.4);overflow:hidden;cursor:pointer;position:relative}
-.profile-avatar-big img{width:100%;height:100%;object-fit:cover}
-.profile-avatar-big .edit-overlay{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,.5);font-size:10px;padding:4px;text-align:center}
-.stat-card{background:rgba(255,255,255,.05);border-radius:14px;margin-bottom:10px;padding:14px;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px}
-.edit-profile-btn{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#e8f4f8;padding:12px;font-weight:800;cursor:pointer;font-size:14px;margin-top:10px}
-.edit-form{background:rgba(255,255,255,.05);border-radius:14px;padding:16px;margin-top:12px;border:1px solid rgba(13,110,253,.3);display:none}
-.market-item{background:rgba(255,255,255,.05);border-radius:14px;margin:0 12px 12px;padding:14px;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px}
-.page-title{font-weight:900;font-size:18px;color:#00b4d8;padding:14px 16px 8px}
-.loading{text-align:center;padding:40px;color:#6a8fa8;font-size:14px}
-.empty{text-align:center;padding:40px;color:#6a8fa8}
-.img-preview-wrap{position:relative;margin-top:8px}
-.img-preview-wrap img{width:100%;border-radius:10px;max-height:200px;object-fit:cover}
-.remove-img{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:28px;height:28px;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-</style>
-</head>
-<body>
+.cat-tag{display:inline-block;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-bottom:8px}
 
-<div id="auth-page">
-  <div class="auth-wrap">
-    <div class="auth-logo">DIANA<span>Connect</span></div>
+/* ACTIONS */
+.actions{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.06);margin-top:8px;padding-top:8px}
+.action-btn{flex:1;background:none;border:none;color:#6a8fa8;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;padding:6px 0;border-radius:8px;transition:background .2s}
+.action-btn:hover{background:rgba(255,255,255,.05)}
+.action-btn.liked{color:#e74c3c}
+.action-btn.commented{color:#00b4d8}
+
+/* COMMENTS SECTION */
     <div class="auth-sub">Le réseau social de la région DIANA 🇲🇬</div>
     <div class="auth-card">
       <div class="auth-tabs">
@@ -140,6 +92,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
   </div>
 </div>
 
+<!-- MAIN APP -->
 <div id="main-app" style="display:none">
   <div class="header">
     <div class="logo">DIANA<span>Connect</span></div>
@@ -147,6 +100,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
   </div>
   <div class="body">
 
+    <!-- FIL -->
     <div class="tab active" id="tab-feed">
       <div class="cat-bar">
         <button class="cat-btn active" onclick="filterCat(this,'all')">🌍 Tout</button>
@@ -178,6 +132,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
       <div id="posts-container"><div class="loading">Chargement...</div></div>
     </div>
 
+    <!-- MARCHE -->
     <div class="tab" id="tab-market">
       <div class="page-title">🛒 Marché DIANA</div>
       <div class="market-item"><div style="font-size:36px">🌿</div><div style="flex:1"><div style="font-weight:800">Vanille du Nord</div><div style="color:#6a8fa8;font-size:12px">🏪 Ambanja Bio</div><div style="color:#2ecc71;font-weight:900;font-size:16px">45 000 Ar/kg</div></div><button style="background:linear-gradient(135deg,#2ecc71,#27ae60);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
@@ -186,9 +141,10 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
       <div class="market-item"><div style="font-size:36px">🍯</div><div style="flex:1"><div style="font-weight:800">Miel sauvage</div><div style="color:#6a8fa8;font-size:12px">🏪 Montagne d'Ambre</div><div style="color:#f39c12;font-weight:900;font-size:16px">25 000 Ar/500g</div></div><button style="background:linear-gradient(135deg,#f39c12,#e67e22);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
     </div>
 
+    <!-- AI -->
     <div class="tab" id="tab-ai">
       <div class="chat-wrap">
-        <div class="ai-badge">✨ <strong>DIANA AI</strong> — Français &amp; Malagasy · Powered by Gemini</div>
+        <div class="ai-badge">✨ <strong>DIANA AI</strong> — Français &amp; Malagasy · Gemini</div>
         <div class="chat-messages" id="chat-messages">
           <div class="bubble ai">
             <div class="bubble-name">✨ DIANA AI</div>
@@ -205,6 +161,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
       </div>
     </div>
 
+    <!-- MESSAGES -->
     <div class="tab" id="tab-messages">
       <div id="msg-list-view">
         <div class="page-title">💬 Messages privés</div>
@@ -224,6 +181,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
       </div>
     </div>
 
+    <!-- PROFIL -->
     <div class="tab" id="tab-profil">
       <div class="profile-wrap">
         <div class="profile-top">
@@ -260,9 +218,10 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
 const GEMINI_KEY=atob('QUl6YVN5Q1NCV0NwcHRZRXpaeEEzMkc3NTRzN0dtME9TREJNY19Z');
 const SUPABASE_URL='https://kwzrglxwtnoxwwbrdmwl.supabase.co';
 const SUPABASE_KEY='sb_publishable_KNu4JtEZLjLWpWCZf4psLw_s2b-Fv3f';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:"dc_"+location.hostname}});
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'dc_'+location.hostname}});
 let currentUser=null,currentProfile=null,currentCat='all',currentConvUser=null,photoFile=null,aiHistory=[];
 
+// ========== AUTH ==========
 async function checkAuth(){
   const {data:{session}}=await sb.auth.getSession();
   if(session){currentUser=session.user;await loadProfile();showApp();}
@@ -340,12 +299,13 @@ function showTab(name){
   if(name==='profil')loadProfile();
 }
 
+// ========== POSTS ==========
 const COLORS={vente:'#2ecc71',service:'#3498db',info:'#e67e22',immobilier:'#9b59b6'};
 const LABELS={vente:'🛒 Vente',service:'🔧 Service',info:'📢 Info',immobilier:'🏠 Immo'};
 
 async function loadPosts(){
   document.getElementById('posts-container').innerHTML='<div class="loading">Chargement...</div>';
-  let query=sb.from('posts').select('*, profiles(id,username,location,avatar_url)').order('created_at',{ascending:false});
+  let query=sb.from('posts').select('*,profiles(id,username,location,avatar_url)').order('created_at',{ascending:false});
   if(currentCat!=='all')query=query.eq('category',currentCat);
   const {data}=await query;
   if(!data||data.length===0){
@@ -370,21 +330,22 @@ function renderPost(p){
         <div class="avatar">${avatarContent}</div>
         <div><div class="user-name">${username}</div><div class="user-meta">📍 ${location} · ${time}</div></div>
       </div>
-      ${isOwner?`<button class="delete-btn" onclick="deletePost('${p.id}')">🗑️ Supprimer</button>`:''}
+      ${isOwner?`<button class="delete-btn" onclick="deletePost('${p.id}')">🗑️</button>`:''}
     </div>
-    <div style="display:inline-block;background:${color}22;color:${color};border:1px solid ${color}44;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-bottom:8px">${LABELS[p.category]||p.category}</div>
+    <div class="cat-tag" style="background:${color}22;color:${color};border:1px solid ${color}44">${LABELS[p.category]||p.category}</div>
     <div class="post-text">${p.content}</div>
     ${p.image_url?`<img src="${p.image_url}" class="post-img"/>`:''}
     <div class="actions">
       <button class="action-btn ${isLiked?'liked':''}" onclick="likePost('${p.id}',this)">
-        ${isLiked?'❤️':'🤍'} ${likedBy.length}
+        ${isLiked?'❤️':'🤍'} <span>${likedBy.length}</span>
       </button>
-      <button class="action-btn" onclick="toggleComments('${p.id}')">💬 Commenter</button>
+      <button class="action-btn" onclick="toggleComments('${p.id}')">
+        💬 <span id="ccount-${p.id}">Commenter</span>
+      </button>
       ${p.profiles?.id&&p.profiles.id!==currentUser?.id?`<button class="action-btn" onclick="openConvById('${p.profiles.id}','${username}')">✉️ Message</button>`:''}
     </div>
-    <div class="comments-section" id="comments-${p.id}" style="display:none">
-      <div id="comments-list-${p.id}"><div style="color:#6a8fa8;font-size:12px;padding:4px 0">Chargement des commentaires...</div></div>
       <div class="comment-input-wrap">
+        <div class="comment-my-avatar">${currentProfile?(currentProfile.username||'?')[0].toUpperCase():'?'}</div>
         <input class="comment-input" id="comment-input-${p.id}" placeholder="Écrire un commentaire..." onkeydown="if(event.key==='Enter')addComment('${p.id}')"/>
         <button class="comment-send" onclick="addComment('${p.id}')">➤</button>
       </div>
@@ -403,23 +364,136 @@ async function toggleComments(postId){
 }
 
 async function loadComments(postId){
-  const {data}=await sb.from('comments')
-    .select('*,profiles(username,avatar_url)')
-    .eq('post_id',postId)
-    .order('created_at',{ascending:true});
   const el=document.getElementById('comments-list-'+postId);
-  if(!data||data.length===0){
-    el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px 0">Aucun commentaire. Soyez le premier ! 😊</div>';
+  el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px">Chargement...</div>';
+  
+  const {data,error}=await sb.from('comments')
+    .select('*')
+    .eq('post_id',postId)
+    .is('parent_id',null)
+    .order('created_at',{ascending:true});
+
+  if(error){
+    el.innerHTML='<div style="color:#e74c3c;font-size:12px;padding:4px">Erreur: '+error.message+'</div>';
     return;
   }
-  el.innerHTML=data.map(c=>`
-    <div class="comment">
-      <div class="comment-avatar">${(c.profiles?.username||'?')[0].toUpperCase()}</div>
-      <div class="comment-bubble">
-        <div class="comment-name">${c.profiles?.username||'Utilisateur'}</div>
-        <div class="comment-text">${c.content}</div>
+
+  if(!data||data.length===0){
+    el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px 0">Aucun commentaire. Soyez le premier ! 😊</div>';
+    const ccount=document.getElementById('ccount-'+postId);
+    if(ccount)ccount.textContent='Commenter';
+    return;
+  }
+
+  // Load profiles for comments
+  const userIds=[...new Set(data.map(c=>c.user_id))];
+  const {data:profiles}=await sb.from('profiles').select('id,username,avatar_url').in('id',userIds);
+  const profileMap={};
+  (profiles||[]).forEach(p=>profileMap[p.id]=p);
+
+  const ccount=document.getElementById('ccount-'+postId);
+  if(ccount)ccount.textContent=data.length+' commentaire'+(data.length>1?'s':'');
+
+  // Load all replies
+  const {data:replies}=await sb.from('comments')
+    .select('*')
+    .eq('post_id',postId)
+    .not('parent_id','is',null)
+    .order('created_at',{ascending:true});
+
+  const replyUserIds=[...new Set((replies||[]).map(r=>r.user_id))];
+  let replyProfileMap={};
+  if(replyUserIds.length>0){
+    const {data:rProfiles}=await sb.from('profiles').select('id,username,avatar_url').in('id',replyUserIds);
+    (rProfiles||[]).forEach(p=>replyProfileMap[p.id]=p);
+  }
+
+  const repliesByParent={};
+  (replies||[]).forEach(r=>{
+    if(!repliesByParent[r.parent_id])repliesByParent[r.parent_id]=[];
+    repliesByParent[r.parent_id].push(r);
+  });
+
+  el.innerHTML=data.map(c=>{
+    const prof=profileMap[c.user_id]||{};
+    const name=prof.username||'Utilisateur';
+    const avatarContent=prof.avatar_url?`<img src="${prof.avatar_url}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:`<span>${name[0].toUpperCase()}</span>`;
+    const likedBy=c.liked_by||[];
+    const isLiked=currentUser&&likedBy.includes(currentUser.id);
+    const commentReplies=repliesByParent[c.id]||[];
+
+    const repliesHtml=commentReplies.map(r=>{
+      const rProf=replyProfileMap[r.user_id]||{};
+      const rName=rProf.username||'Utilisateur';
+      const rLikedBy=r.liked_by||[];
+      const rIsLiked=currentUser&&rLikedBy.includes(currentUser.id);
+      return `<div class="reply-item">
+        <div class="reply-avatar">${rName[0].toUpperCase()}</div>
+        <div class="reply-bubble">
+          <div class="reply-name">${rName}</div>
+          <div class="reply-text">${r.content}</div>
+          <div class="reply-actions">
+            <button class="reply-action ${rIsLiked?'liked':''}" onclick="likeComment('${r.id}','${postId}',this)">
+              ${rIsLiked?'❤️':'🤍'} ${rLikedBy.length>0?rLikedBy.length:''}
+            </button>
+            <span style="color:#4a6fa8;font-size:10px">${timeAgo(r.created_at)}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="comment-item" id="comment-${c.id}">
+      <div class="comment-avatar">${avatarContent}</div>
+      <div class="comment-body">
+        <div class="comment-bubble">
+          <div class="comment-name">${name}</div>
+          <div class="comment-text">${c.content}</div>
+        </div>
+        <div class="comment-actions">
+          <button class="comment-action ${isLiked?'liked':''}" onclick="likeComment('${c.id}','${postId}',this)">
+            ${isLiked?'❤️':'🤍'} ${likedBy.length>0?likedBy.length+' J\'aime':'J\'aime'}
+          </button>
+          <button class="comment-action" onclick="toggleReplyInput('${c.id}','${postId}')">Répondre</button>
+          <span class="comment-time">${timeAgo(c.created_at)}</span>
+        </div>
+        ${repliesHtml?`<div class="replies-wrap" id="replies-${c.id}">${repliesHtml}</div>`:'<div class="replies-wrap" id="replies-'+c.id+'"></div>'}
+        <div id="reply-input-${c.id}" style="display:none">
+          <div class="reply-input-wrap">
+            <input class="reply-input" id="reply-field-${c.id}" placeholder="Répondre à ${name}..." onkeydown="if(event.key==='Enter')addReply('${c.id}','${postId}')"/>
+            <button class="reply-send" onclick="addReply('${c.id}','${postId}')">➤</button>
+          </div>
+        </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
+}
+
+function toggleReplyInput(commentId,postId){
+  const wrap=document.getElementById('reply-input-'+commentId);
+  if(wrap.style.display==='none'){
+    wrap.style.display='block';
+    document.getElementById('reply-field-'+commentId)?.focus();
+  } else {
+    wrap.style.display='none';
+  }
+}
+
+async function addReply(commentId,postId){
+  const input=document.getElementById('reply-field-'+commentId);
+  const content=input.value.trim();
+  if(!content||!currentUser)return;
+  input.value='';
+  const {error}=await sb.from('comments').insert({
+    post_id:postId,
+    user_id:currentUser.id,
+    content,
+    parent_id:commentId,
+    liked_by:[]
+  });
+  if(!error){
+    document.getElementById('reply-input-'+commentId).style.display='none';
+    await loadComments(postId);
+  }
 }
 
 async function addComment(postId){
@@ -427,7 +501,27 @@ async function addComment(postId){
   const content=input.value.trim();
   if(!content||!currentUser)return;
   input.value='';
-  await sb.from('comments').insert({post_id:postId,user_id:currentUser.id,content});
+  const {error}=await sb.from('comments').insert({
+    post_id:postId,
+    user_id:currentUser.id,
+    content,
+    liked_by:[],
+    parent_id:null
+  });
+  if(error){
+    alert('Erreur: '+error.message);
+    return;
+  }
+  await loadComments(postId);
+}
+
+async function likeComment(commentId,postId,btn){
+  if(!currentUser)return;
+  const {data:comment}=await sb.from('comments').select('liked_by').eq('id',commentId).single();
+  let likedBy=comment?.liked_by||[];
+  const uid=currentUser.id;
+  likedBy=likedBy.includes(uid)?likedBy.filter(x=>x!==uid):[...likedBy,uid];
+  await sb.from('comments').update({liked_by:likedBy}).eq('id',commentId);
   await loadComments(postId);
 }
 
@@ -491,7 +585,7 @@ async function likePost(id,btn){
   await sb.from('posts').update({liked_by:likedBy}).eq('id',id);
   const isLiked=likedBy.includes(uid);
   btn.className='action-btn'+(isLiked?' liked':'');
-  btn.innerHTML=(isLiked?'❤️':'🤍')+' '+likedBy.length;
+  btn.innerHTML=(isLiked?'❤️':'🤍')+' <span>'+likedBy.length+'</span>';
 }
 
 async function uploadAvatar(input){
@@ -525,6 +619,7 @@ async function saveProfile(){
   document.getElementById('edit-form').style.display='none';
 }
 
+// ========== MESSAGES ==========
 async function loadConversations(){
   const {data}=await sb.from('messages')
     .select('*,sender:profiles!sender_id(id,username),receiver:profiles!receiver_id(id,username)')
@@ -597,6 +692,7 @@ function backToMessages(){
   loadConversations();
 }
 
+// ========== AI ==========
 async function sendAI(){
   const input=document.getElementById('chat-input');
   const msg=input.value.trim();
@@ -612,7 +708,7 @@ async function sendAI(){
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        system_instruction:{parts:[{text:`Tu es DIANA AI, assistant bilingue pour la région DIANA à Madagascar (Antsiranana/Diego-Suarez, Nosy Be, Ambanja, Ambilobe). RÈGLE IMPORTANTE: Si l'utilisateur écrit en malagasy, réponds UNIQUEMENT en malagasy. Si en français, réponds en français. Tu aides avec: agriculture locale, santé, commerce, services, culture malgache. Sois chaleureux et utilise des emojis. Connais bien la région DIANA.`}]},
+        system_instruction:{parts:[{text:`Tu es DIANA AI, assistant bilingue pour la région DIANA à Madagascar (Antsiranana/Diego-Suarez, Nosy Be, Ambanja, Ambilobe). RÈGLE: Si l'utilisateur écrit en malagasy, réponds UNIQUEMENT en malagasy. Si en français, réponds en français. Tu aides avec: agriculture locale, santé, commerce, services, culture malgache. Sois chaleureux avec des emojis.`}]},
         contents:aiHistory.slice(-10)
       })
     });
@@ -623,7 +719,7 @@ async function sendAI(){
     addBubble('ai',reply);
   }catch(e){
     document.getElementById(typingId)?.remove();
-    addBubble('ai','😊 Misy olana kely amin\'ny fifandraisana. Avereno azafady !');
+    addBubble('ai','😊 Misy olana kely. Avereno azafady !');
   }
 }
 
@@ -646,8 +742,22 @@ function timeAgo(date){
   return `il y a ${Math.floor(diff/86400)}j`;
 }
 
+
+async function sharePost(id, text){
+  if(navigator.share){
+    await navigator.share({
+      title:'DIANA Connect',
+      text:text,
+      url:window.location.href
+    });
+  } else {
+    await navigator.clipboard.writeText(window.location.href);
+    alert('Lien copié ! 📋');
+  }
+}
+
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/diana-connect/sw.js');}
 checkAuth();
 </script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/diana-connect/sw.js");}</script>
 </body>
-        </html>
+  </html>
