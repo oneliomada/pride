@@ -4,11 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>DIANA Connect</title>
-<link rel="manifest" href="/diana-connect/manifest.json"/>
-<meta name="theme-color" content="#0d6efd"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-title" content="DIANA Connect"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap');
@@ -16,10 +11,9 @@
 body{font-family:'Nunito',sans-serif;background:#0a1628;color:#e8f4f8;max-width:480px;margin:0 auto;min-height:100vh}
 ::-webkit-scrollbar{width:0}
 input,textarea,button,select{font-family:'Nunito',sans-serif}
-
-/* AUTH */
 .auth-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
-.auth-logo{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px}.auth-logo span{color:#00f5d4}
+.auth-logo{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px}
+.auth-logo span{color:#00f5d4}
 .auth-sub{color:#6a8fa8;font-size:14px;margin-bottom:32px;text-align:center}
 .auth-card{background:rgba(255,255,255,.05);border-radius:20px;padding:24px;width:100%;border:1px solid rgba(255,255,255,.1)}
 .auth-tabs{display:flex;margin-bottom:20px;background:rgba(255,255,255,.05);border-radius:12px;padding:4px}
@@ -30,44 +24,105 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
 .field input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 16px;color:#e8f4f8;font-size:15px;outline:none}
 .btn-primary{width:100%;background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:12px;color:#fff;padding:14px;font-weight:900;font-size:16px;cursor:pointer;margin-top:8px}
 .auth-error{color:#e74c3c;font-size:13px;margin-top:8px;text-align:center;min-height:20px}
-
-/* HEADER & NAV */
-.header{background:linear-gradient(90deg,#0d6efd,#00b4d8);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-size:20px;font-weight:900;color:#fff}.logo span{color:#00f5d4}
-.logout-btn{background:rgba(255,255,255,.2);border:none;border-radius:8px;color:#fff;padding:6px 12px;font-size:12px;font-weight:800;cursor:pointer}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(10,22,40,.97);border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-around;padding:8px 0 14px;z-index:100}
-.nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:#6a8fa8;font-size:20px;padding:4px 10px}
+.header{background:linear-gradient(90deg,#0d6efd,#00b4d8);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:18px;font-weight:900;color:#fff}.logo span{color:#00f5d4}
+.header-right{display:flex;align-items:center;gap:10px}
+.notif-btn{background:rgba(255,255,255,.2);border:none;border-radius:8px;color:#fff;padding:6px 10px;font-size:16px;cursor:pointer;position:relative}
+.notif-badge{position:absolute;top:-4px;right:-4px;background:#e74c3c;border-radius:50%;width:16px;height:16px;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.logout-btn{background:rgba(255,255,255,.2);border:none;border-radius:8px;color:#fff;padding:6px 10px;font-size:12px;font-weight:800;cursor:pointer}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:rgba(10,22,40,.97);border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-around;padding:6px 0 12px;z-index:100}
+.nav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:#6a8fa8;font-size:20px;padding:4px 8px}
 .nav-btn.active{color:#00b4d8}
-.nav-label{font-size:10px;font-weight:800}
+.nav-label{font-size:9px;font-weight:800}
 .body{padding:0 0 80px}
 .tab{display:none}.tab.active{display:block}
-
-/* FEED */
-.cat-bar{display:flex;gap:8px;padding:12px 16px;overflow-x:auto;scrollbar-width:none}
-.cat-btn{background:rgba(255,255,255,.07);border:none;border-radius:20px;padding:6px 14px;color:#8ab;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+.cat-bar{display:flex;gap:8px;padding:10px 12px;overflow-x:auto;scrollbar-width:none}
+.cat-btn{background:rgba(255,255,255,.07);border:none;border-radius:20px;padding:5px 12px;color:#8ab;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
 .cat-btn.active{background:linear-gradient(90deg,#0d6efd,#00b4d8);color:#fff}
-
-/* CARD */
-.card{background:rgba(255,255,255,.05);border-radius:16px;margin:0 12px 14px;padding:16px;border:1px solid rgba(255,255,255,.08)}
-.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.card-top-left{display:flex;align-items:center;gap:10px}
-.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fff;flex-shrink:0;overflow:hidden}
+.card{background:rgba(255,255,255,.05);border-radius:16px;margin:0 10px 12px;padding:14px;border:1px solid rgba(255,255,255,.08)}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fff;flex-shrink:0;overflow:hidden;cursor:pointer}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.user-name{font-weight:800;font-size:14px}
+.user-name{font-weight:800;font-size:14px;cursor:pointer}
 .user-meta{font-size:11px;color:#6a8fa8}
-.delete-btn{background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);border-radius:8px;color:#e74c3c;padding:4px 10px;font-size:12px;font-weight:800;cursor:pointer}
-.post-img{width:100%;border-radius:12px;margin:10px 0;max-height:300px;object-fit:cover}
-.post-text{font-size:14px;line-height:1.6;margin-bottom:10px}
-.cat-tag{display:inline-block;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-bottom:8px}
-
-/* ACTIONS */
-.actions{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.06);margin-top:8px;padding-top:8px}
-.action-btn{flex:1;background:none;border:none;color:#6a8fa8;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;padding:6px 0;border-radius:8px;transition:background .2s}
-.action-btn:hover{background:rgba(255,255,255,.05)}
+.post-img{width:100%;border-radius:12px;margin:8px 0;max-height:280px;object-fit:cover}
+.post-text{font-size:14px;line-height:1.6;margin-bottom:8px}
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.action-btn{background:none;border:none;color:#6a8fa8;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:4px;font-weight:700}
 .action-btn.liked{color:#e74c3c}
-.action-btn.commented{color:#00b4d8}
+.action-btn.delete{color:#e74c3c}
+.comments-section{margin-top:10px;border-top:1px solid rgba(255,255,255,.06);padding-top:10px}
+.comment{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.comment-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0}
+.comment-content{background:rgba(255,255,255,.05);border-radius:10px;padding:6px 10px;flex:1}
+.comment-user{font-weight:800;font-size:11px;color:#00b4d8}
+.comment-text{font-size:13px;margin-top:2px}
+.comment-input-wrap{display:flex;gap:8px;margin-top:8px}
+.comment-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:8px 12px;color:#e8f4f8;font-size:13px;outline:none}
+.comment-send{background:linear-gradient(135deg,#0d6efd,#00b4d8);border:none;border-radius:50%;width:32px;height:32px;color:#fff;font-size:14px;cursor:pointer;flex-shrink:0}
+.post-form{background:rgba(255,255,255,.05);border-radius:16px;margin:0 10px 12px;padding:14px;border:1px solid rgba(13,110,253,.3)}
+.post-form textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#e8f4f8;padding:10px;font-size:14px;resize:none;outline:none}
+.post-form select{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#e8f4f8;padding:8px 10px;font-size:13px;outline:none;margin-top:6px}
+.form-actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.btn-pub{background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:10px;color:#fff;padding:8px 16px;font-weight:800;cursor:pointer;font-size:13px}
+.btn-cancel{background:rgba(255,255,255,.07);border:none;border-radius:10px;color:#e8f4f8;padding:8px 12px;font-weight:800;cursor:pointer;font-size:13px}
+.btn-photo{background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.3);border-radius:10px;color:#00b4d8;padding:8px 12px;font-weight:800;cursor:pointer;font-size:13px}
+.fab{position:fixed;bottom:86px;right:16px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);border:none;color:#fff;font-size:20px;cursor:pointer;box-shadow:0 4px 20px rgba(13,110,253,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 130px)}
+.ai-badge{background:rgba(13,110,253,.1);border:1px solid rgba(13,110,253,.3);border-radius:10px;padding:8px 12px;margin:8px 12px;font-size:12px;color:#00b4d8}
+.chat-messages{flex:1;overflow-y:auto;padding:8px 12px;display:flex;flex-direction:column;gap:8px}
+.bubble{max-width:82%;padding:10px 14px;font-size:13.5px;line-height:1.6}
+.bubble.ai{align-self:flex-start;background:rgba(255,255,255,.07);border-radius:18px 18px 18px 4px;border:1px solid rgba(255,255,255,.08)}
+.bubble.user{align-self:flex-end;background:linear-gradient(135deg,#0d6efd,#00b4d8);border-radius:18px 18px 4px 18px}
+.bubble-name{font-weight:800;font-size:11px;color:#00b4d8;margin-bottom:4px}
+.chat-input{display:flex;gap:8px;padding:10px 12px;background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.06)}
+.chat-field{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:10px 14px;color:#e8f4f8;font-size:14px;outline:none}
+.send-btn{background:linear-gradient(135deg,#0d6efd,#00b4d8);border:none;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0;color:#fff}
+.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#00b4d8;margin:0 2px;animation:bounce 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.msg-item{background:rgba(255,255,255,.05);border-radius:14px;padding:12px;margin:0 10px 8px;display:flex;align-items:center;gap:10px;cursor:pointer;border:1px solid rgba(255,255,255,.08)}
+.msg-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff;flex-shrink:0}
+.msg-name{font-weight:800;font-size:14px}
+.msg-preview{font-size:12px;color:#6a8fa8;margin-top:2px}
+.conv-messages{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:8px;height:calc(100vh - 220px)}
+.back-btn{background:none;border:none;color:#00b4d8;font-size:14px;font-weight:800;cursor:pointer;padding:10px 12px}
+.profile-wrap{padding:16px}
+.profile-top{text-align:center;margin-bottom:16px}
+.profile-avatar-big{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#0d6efd,#00b4d8);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:#fff;overflow:hidden;cursor:pointer;position:relative}
+.profile-avatar-big img{width:100%;height:100%;object-fit:cover}
+.edit-overlay{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,.5);font-size:9px;padding:3px;text-align:center}
+.stat-row{display:flex;gap:10px;margin-bottom:12px}
+.stat-card{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,.08);flex:1;text-align:center}
+.stat-num{font-weight:900;font-size:20px;color:#00b4d8}
+.stat-label{font-size:11px;color:#6a8fa8;margin-top:2px}
+.edit-profile-btn{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#e8f4f8;padding:10px;font-weight:800;cursor:pointer;font-size:13px}
+.edit-form{background:rgba(255,255,255,.05);border-radius:12px;padding:14px;margin-top:10px;border:1px solid rgba(13,110,253,.3);display:none}
+.market-item{background:rgba(255,255,255,.05);border-radius:12px;margin:0 10px 10px;padding:12px;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:12px}
+.page-title{font-weight:900;font-size:17px;color:#00b4d8;padding:12px 12px 6px}
+.loading{text-align:center;padding:32px;color:#6a8fa8;font-size:14px}
+.empty{text-align:center;padding:32px;color:#6a8fa8}
+.img-preview-wrap{position:relative;margin-top:8px}
+.img-preview-wrap img{width:100%;border-radius:10px;max-height:180px;object-fit:cover}
+.remove-img{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border:none;border-radius:50%;width:26px;height:26px;color:#fff;font-size:14px;cursor:pointer}
+.notif-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin:0 10px 8px;border:1px solid rgba(255,255,255,.08);font-size:13px}
+.notif-item.unread{border-color:rgba(13,110,253,.4);background:rgba(13,110,253,.08)}
+.follow-btn{background:linear-gradient(90deg,#0d6efd,#00b4d8);border:none;border-radius:8px;color:#fff;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.unfollow-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#e8f4f8;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.block-btn{background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);border-radius:8px;color:#e74c3c;padding:5px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.help-item{background:rgba(255,255,255,.05);border-radius:12px;padding:14px;margin:0 10px 8px;border:1px solid rgba(255,255,255,.08);cursor:pointer}
+.help-title{font-weight:800;font-size:14px;margin-bottom:4px}
+.help-answer{font-size:13px;color:#6a8fa8;display:none;margin-top:8px;line-height:1.6}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-card{background:#0d2137;border-radius:20px;padding:20px;width:100%;border:1px solid rgba(255,255,255,.1)}
+.modal-title{font-weight:900;font-size:16px;margin-bottom:14px;color:#00b4d8}
+</style>
+</head>
+<body>
 
-/* COMMENTS SECTION */
+<div id="auth-page">
+  <div class="auth-wrap">
+    <div class="auth-logo">DIANA<span>Connect</span></div>
     <div class="auth-sub">Le réseau social de la région DIANA 🇲🇬</div>
     <div class="auth-card">
       <div class="auth-tabs">
@@ -92,11 +147,13 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
   </div>
 </div>
 
-<!-- MAIN APP -->
 <div id="main-app" style="display:none">
   <div class="header">
     <div class="logo">DIANA<span>Connect</span></div>
-    <button class="logout-btn" onclick="logout()">Déconnexion</button>
+    <div class="header-right">
+      <button class="notif-btn" onclick="showTab('notifs')" id="notif-btn">🔔<span class="notif-badge" id="notif-count" style="display:none">0</span></button>
+      <button class="logout-btn" onclick="logout()">⏻</button>
+    </div>
   </div>
   <div class="body">
 
@@ -110,7 +167,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
         <button class="cat-btn" onclick="filterCat(this,'immobilier')">🏠 Immo</button>
       </div>
       <div id="post-form-wrap" style="display:none" class="post-form">
-        <div style="font-weight:800;margin-bottom:10px">✍️ Nouvelle publication</div>
+        <div style="font-weight:800;margin-bottom:8px">✍️ Nouvelle publication</div>
         <textarea id="post-input" rows="3" placeholder="Partagez quelque chose..."></textarea>
         <select id="post-cat">
           <option value="info">📢 Information</option>
@@ -120,8 +177,7 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
         </select>
         <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="previewPhoto(this)"/>
         <div id="img-preview-wrap" class="img-preview-wrap" style="display:none">
-          <img id="img-preview"/>
-          <button class="remove-img" onclick="removePhoto()">✕</button>
+          <img id="img-preview"/><button class="remove-img" onclick="removePhoto()">✕</button>
         </div>
         <div class="form-actions">
           <button class="btn-photo" onclick="document.getElementById('photo-input').click()">📸 Photo</button>
@@ -135,24 +191,18 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
     <!-- MARCHE -->
     <div class="tab" id="tab-market">
       <div class="page-title">🛒 Marché DIANA</div>
-      <div class="market-item"><div style="font-size:36px">🌿</div><div style="flex:1"><div style="font-weight:800">Vanille du Nord</div><div style="color:#6a8fa8;font-size:12px">🏪 Ambanja Bio</div><div style="color:#2ecc71;font-weight:900;font-size:16px">45 000 Ar/kg</div></div><button style="background:linear-gradient(135deg,#2ecc71,#27ae60);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
-      <div class="market-item"><div style="font-size:36px">🌸</div><div style="flex:1"><div style="font-weight:800">Ylang-Ylang</div><div style="color:#6a8fa8;font-size:12px">🏪 Nosy Be Parfums</div><div style="color:#9b59b6;font-weight:900;font-size:16px">80 000 Ar/L</div></div><button style="background:linear-gradient(135deg,#9b59b6,#8e44ad);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
-      <div class="market-item"><div style="font-size:36px">🐟</div><div style="flex:1"><div style="font-weight:800">Poisson frais</div><div style="color:#6a8fa8;font-size:12px">🏪 Pêcheurs Antsiranana</div><div style="color:#3498db;font-weight:900;font-size:16px">8 000 Ar/kg</div></div><button style="background:linear-gradient(135deg,#3498db,#2980b9);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
-      <div class="market-item"><div style="font-size:36px">🍯</div><div style="flex:1"><div style="font-weight:800">Miel sauvage</div><div style="color:#6a8fa8;font-size:12px">🏪 Montagne d'Ambre</div><div style="color:#f39c12;font-weight:900;font-size:16px">25 000 Ar/500g</div></div><button style="background:linear-gradient(135deg,#f39c12,#e67e22);border:none;border-radius:10px;color:#fff;padding:8px 14px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
+      <div class="market-item"><div style="font-size:32px">🌿</div><div style="flex:1"><div style="font-weight:800">Vanille du Nord</div><div style="color:#6a8fa8;font-size:11px">🏪 Ambanja Bio</div><div style="color:#2ecc71;font-weight:900">45 000 Ar/kg</div></div><button style="background:linear-gradient(135deg,#2ecc71,#27ae60);border:none;border-radius:10px;color:#fff;padding:8px 12px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
+      <div class="market-item"><div style="font-size:32px">🌸</div><div style="flex:1"><div style="font-weight:800">Ylang-Ylang</div><div style="color:#6a8fa8;font-size:11px">🏪 Nosy Be Parfums</div><div style="color:#9b59b6;font-weight:900">80 000 Ar/L</div></div><button style="background:linear-gradient(135deg,#9b59b6,#8e44ad);border:none;border-radius:10px;color:#fff;padding:8px 12px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
+      <div class="market-item"><div style="font-size:32px">🐟</div><div style="flex:1"><div style="font-weight:800">Poisson frais</div><div style="color:#6a8fa8;font-size:11px">🏪 Pêcheurs Antsiranana</div><div style="color:#3498db;font-weight:900">8 000 Ar/kg</div></div><button style="background:linear-gradient(135deg,#3498db,#2980b9);border:none;border-radius:10px;color:#fff;padding:8px 12px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
+      <div class="market-item"><div style="font-size:32px">🍯</div><div style="flex:1"><div style="font-weight:800">Miel sauvage</div><div style="color:#6a8fa8;font-size:11px">🏪 Montagne d'Ambre</div><div style="color:#f39c12;font-weight:900">25 000 Ar/500g</div></div><button style="background:linear-gradient(135deg,#f39c12,#e67e22);border:none;border-radius:10px;color:#fff;padding:8px 12px;font-weight:800;cursor:pointer;font-size:12px">Contacter</button></div>
     </div>
 
     <!-- AI -->
     <div class="tab" id="tab-ai">
       <div class="chat-wrap">
-        <div class="ai-badge">✨ <strong>DIANA AI</strong> — Français &amp; Malagasy · Gemini</div>
+        <div class="ai-badge">🤖 <strong>DIANA AI</strong> — Français & Malagasy</div>
         <div class="chat-messages" id="chat-messages">
-          <div class="bubble ai">
-            <div class="bubble-name">✨ DIANA AI</div>
-            Bonjour ! Miarahaba ! 😊<br><br>
-            Je parle <strong>français</strong> et <strong>malagasy</strong>.<br>
-            Inona no azonko atao ho anao ?<br>
-            Comment puis-je vous aider ?
-          </div>
+          <div class="bubble ai"><div class="bubble-name">🤖 DIANA AI</div>Bonjour ! Miarahaba ! Je parle français et malagasy. Comment puis-je vous aider ? 😊</div>
         </div>
         <div class="chat-input">
           <input class="chat-field" id="chat-input" placeholder="Écrivez en français ou malagasy..." onkeydown="if(event.key==='Enter')sendAI()"/>
@@ -164,15 +214,11 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
     <!-- MESSAGES -->
     <div class="tab" id="tab-messages">
       <div id="msg-list-view">
-        <div class="page-title">💬 Messages privés</div>
+        <div class="page-title">💬 Messages</div>
         <div id="conversations-list"><div class="loading">Chargement...</div></div>
       </div>
       <div id="conv-view" style="display:none;flex-direction:column">
-        <div class="conv-header">
-          <button class="back-btn" onclick="backToMessages()">←</button>
-          <div class="conv-avatar" id="conv-avatar"></div>
-          <div class="conv-name" id="conv-title"></div>
-        </div>
+        <button class="back-btn" id="conv-back-btn" onclick="backToMessages()">← Retour</button>
         <div class="conv-messages" id="conv-messages"></div>
         <div class="chat-input">
           <input class="chat-field" id="msg-input" placeholder="Écrire un message..." onkeydown="if(event.key==='Enter')sendMsg()"/>
@@ -181,26 +227,46 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
       </div>
     </div>
 
+    <!-- NOTIFICATIONS -->
+    <div class="tab" id="tab-notifs">
+      <div class="page-title">🔔 Notifications</div>
+      <div id="notifs-list"><div class="loading">Chargement...</div></div>
+    </div>
+
     <!-- PROFIL -->
     <div class="tab" id="tab-profil">
       <div class="profile-wrap">
         <div class="profile-top">
           <div class="profile-avatar-big" id="profile-avatar-big" onclick="document.getElementById('avatar-input').click()">
             <span id="profile-avatar-letter">?</span>
-            <div class="edit-overlay">📷 Changer</div>
+            <div class="edit-overlay">📷</div>
           </div>
           <input type="file" id="avatar-input" accept="image/*" style="display:none" onchange="uploadAvatar(this)"/>
           <div style="font-weight:900;font-size:20px" id="profile-name">...</div>
           <div style="color:#6a8fa8;font-size:13px;margin-top:4px" id="profile-location">📍 Région DIANA</div>
         </div>
-        <div class="stat-card"><span style="font-size:24px">📝</span><div><div style="font-weight:900;font-size:20px" id="profile-posts">0</div><div style="color:#6a8fa8;font-size:12px">Publications</div></div></div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-num" id="profile-posts">0</div><div class="stat-label">Publications</div></div>
+          <div class="stat-card"><div class="stat-num" id="profile-followers">0</div><div class="stat-label">Abonnés</div></div>
+          <div class="stat-card"><div class="stat-num" id="profile-following">0</div><div class="stat-label">Abonnements</div></div>
+        </div>
         <button class="edit-profile-btn" onclick="toggleEditForm()">✏️ Modifier mon profil</button>
         <div class="edit-form" id="edit-form">
-          <div class="field"><label>Nom d'utilisateur</label><input type="text" id="edit-username" placeholder="Nouveau nom"/></div>
-          <div class="field"><label>Ville</label><input type="text" id="edit-location" placeholder="Votre ville"/></div>
+          <div class="field"><label>Nom d'utilisateur</label><input type="text" id="edit-username"/></div>
+          <div class="field"><label>Ville</label><input type="text" id="edit-location"/></div>
           <button class="btn-pub" onclick="saveProfile()">💾 Sauvegarder</button>
         </div>
+        <div style="margin-top:12px">
+          <div class="page-title" style="padding:0 0 8px">Mes publications</div>
+          <div id="my-posts-list"><div class="loading">Chargement...</div></div>
+        </div>
       </div>
+    </div>
+
+    <!-- AIDE -->
+    <div class="tab" id="tab-help">
+      <div class="page-title">❓ Centre d'aide</div>
+      <div id="help-content"></div>
     </div>
 
   </div>
@@ -211,61 +277,68 @@ input,textarea,button,select{font-family:'Nunito',sans-serif}
     <button class="nav-btn" id="nav-ai" onclick="showTab('ai')"><span>🤖</span><span class="nav-label">AI</span></button>
     <button class="nav-btn" id="nav-messages" onclick="showTab('messages')"><span>💬</span><span class="nav-label">Messages</span></button>
     <button class="nav-btn" id="nav-profil" onclick="showTab('profil')"><span>👤</span><span class="nav-label">Profil</span></button>
+    <button class="nav-btn" id="nav-help" onclick="showTab('help')"><span>❓</span><span class="nav-label">Aide</span></button>
+  </div>
+</div>
+
+<!-- MODAL PROFIL UTILISATEUR -->
+<div id="user-modal" class="modal" style="display:none">
+  <div class="modal-card">
+    <div class="modal-title" id="modal-username">Profil</div>
+    <div style="color:#6a8fa8;font-size:13px;margin-bottom:14px" id="modal-location"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="follow-btn" id="modal-follow-btn" onclick="toggleFollow()">➕ Suivre</button>
+      <button class="action-btn" onclick="openMsgFromModal()">💬 Message</button>
+      <button class="block-btn" onclick="blockUser()">🚫 Bloquer</button>
+      <button class="btn-cancel" onclick="closeModal()">Fermer</button>
+    </div>
   </div>
 </div>
 
 <script>
-const GEMINI_KEY=atob('QUl6YVN5Q1NCV0NwcHRZRXpaeEEzMkc3NTRzN0dtME9TREJNY19Z');
 const SUPABASE_URL='https://kwzrglxwtnoxwwbrdmwl.supabase.co';
 const SUPABASE_KEY='sb_publishable_KNu4JtEZLjLWpWCZf4psLw_s2b-Fv3f';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'dc_'+location.hostname}});
-let currentUser=null,currentProfile=null,currentCat='all',currentConvUser=null,photoFile=null,aiHistory=[];
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'dc_v2_'+btoa(SUPABASE_URL)}});
+let currentUser=null,currentProfile=null,currentCat='all',currentConvUser=null,photoFile=null,aiHistory=[],modalUserId=null,blockedUsers=[];
 
-// ========== AUTH ==========
+// ---- AUTH ----
 async function checkAuth(){
   const {data:{session}}=await sb.auth.getSession();
   if(session){currentUser=session.user;await loadProfile();showApp();}
 }
-
 function switchAuth(tab){
   document.querySelectorAll('.auth-tab').forEach((t,i)=>t.classList.toggle('active',(tab==='login'&&i===0)||(tab==='register'&&i===1)));
   document.getElementById('login-form').style.display=tab==='login'?'block':'none';
   document.getElementById('register-form').style.display=tab==='register'?'block':'none';
 }
-
 async function login(){
   const email=document.getElementById('login-email').value;
   const pass=document.getElementById('login-pass').value;
   document.getElementById('login-error').textContent='Connexion...';
-  await sb.auth.signOut();
   const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
   if(error){document.getElementById('login-error').textContent='Email ou mot de passe incorrect';return;}
   currentUser=data.user;await loadProfile();showApp();
 }
-
 async function register(){
   const username=document.getElementById('reg-username').value.trim();
   const email=document.getElementById('reg-email').value.trim();
   const pass=document.getElementById('reg-pass').value;
-  const loc=document.getElementById('reg-location').value.trim()||'Région DIANA';
+  const location=document.getElementById('reg-location').value.trim()||'Région DIANA';
   if(!username||!email||!pass){document.getElementById('reg-error').textContent='Remplissez tous les champs';return;}
   document.getElementById('reg-error').textContent='Création...';
-  await sb.auth.signOut();
   const {data,error}=await sb.auth.signUp({email,password:pass});
   if(error){document.getElementById('reg-error').textContent=error.message;return;}
   if(!data.user){document.getElementById('reg-error').textContent='Erreur';return;}
   currentUser=data.user;
-  await sb.from('profiles').upsert({id:currentUser.id,username,location:loc});
+  await sb.from('profiles').upsert({id:currentUser.id,username,location});
   await loadProfile();showApp();
 }
-
 async function logout(){
   await sb.auth.signOut();
   currentUser=null;currentProfile=null;
   document.getElementById('auth-page').style.display='flex';
   document.getElementById('main-app').style.display='none';
 }
-
 async function loadProfile(){
   const {data}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
   currentProfile=data;
@@ -278,288 +351,106 @@ async function loadProfile(){
     } else {
       document.getElementById('profile-avatar-letter').textContent=(data.username||'?')[0].toUpperCase();
     }
-    const {count}=await sb.from('posts').select('*',{count:'exact'}).eq('user_id',currentUser.id);
-    document.getElementById('profile-posts').textContent=count||0;
+    const {count:pc}=await sb.from('posts').select('*',{count:'exact'}).eq('user_id',currentUser.id);
+    const {count:fc}=await sb.from('follows').select('*',{count:'exact'}).eq('follower_id',currentUser.id);
+    const {count:frc}=await sb.from('follows').select('*',{count:'exact'}).eq('following_id',currentUser.id);
+    document.getElementById('profile-posts').textContent=pc||0;
+    document.getElementById('profile-following').textContent=fc||0;
+    document.getElementById('profile-followers').textContent=frc||0;
+    // Charger les bloqués
+    const {data:bl}=await sb.from('blocks').select('blocked_id').eq('blocker_id',currentUser.id);
+    blockedUsers=(bl||[]).map(b=>b.blocked_id);
+    loadNotifCount();
+    loadMyPosts();
   }
 }
-
 function showApp(){
   document.getElementById('auth-page').style.display='none';
   document.getElementById('main-app').style.display='block';
   loadPosts();
 }
 
+// ---- TABS ----
 function showTab(name){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  document.getElementById('nav-'+name).classList.add('active');
+  const navBtn=document.getElementById('nav-'+name);
+  if(navBtn)navBtn.classList.add('active');
   document.getElementById('fab').style.display=name==='feed'?'flex':'none';
   if(name==='messages')loadConversations();
-  if(name==='profil')loadProfile();
+  if(name==='profil'){loadProfile();}
+  if(name==='notifs')loadNotifs();
+  if(name==='help')loadHelp();
 }
 
-// ========== POSTS ==========
-const COLORS={vente:'#2ecc71',service:'#3498db',info:'#e67e22',immobilier:'#9b59b6'};
-const LABELS={vente:'🛒 Vente',service:'🔧 Service',info:'📢 Info',immobilier:'🏠 Immo'};
-
+// ---- POSTS ----
 async function loadPosts(){
   document.getElementById('posts-container').innerHTML='<div class="loading">Chargement...</div>';
-  let query=sb.from('posts').select('*,profiles(id,username,location,avatar_url)').order('created_at',{ascending:false});
+  let query=sb.from('posts').select('*, profiles(id,username,location,avatar_url)').order('created_at',{ascending:false});
   if(currentCat!=='all')query=query.eq('category',currentCat);
   const {data}=await query;
   if(!data||data.length===0){
     document.getElementById('posts-container').innerHTML='<div class="empty">😊 Aucune publication encore.<br>Soyez le premier !</div>';
     return;
   }
-  document.getElementById('posts-container').innerHTML=data.map(p=>renderPost(p)).join('');
-}
-
-function renderPost(p){
-  const color=COLORS[p.category]||'#00b4d8';
-  const username=p.profiles?.username||'Utilisateur';
-  const location=p.profiles?.location||'DIANA';
-  const time=timeAgo(p.created_at);
-  const likedBy=p.liked_by||[];
-  const isLiked=currentUser&&likedBy.includes(currentUser.id);
-  const isOwner=currentUser&&p.user_id===currentUser.id;
-  const avatarContent=p.profiles?.avatar_url?`<img src="${p.profiles.avatar_url}"/>`:`<span>${username[0].toUpperCase()}</span>`;
-  return `<div class="card" id="post-${p.id}">
-    <div class="card-top">
-      <div class="card-top-left">
-        <div class="avatar">${avatarContent}</div>
-        <div><div class="user-name">${username}</div><div class="user-meta">📍 ${location} · ${time}</div></div>
-      </div>
-      ${isOwner?`<button class="delete-btn" onclick="deletePost('${p.id}')">🗑️</button>`:''}
-    </div>
-    <div class="cat-tag" style="background:${color}22;color:${color};border:1px solid ${color}44">${LABELS[p.category]||p.category}</div>
-    <div class="post-text">${p.content}</div>
-    ${p.image_url?`<img src="${p.image_url}" class="post-img"/>`:''}
-    <div class="actions">
-      <button class="action-btn ${isLiked?'liked':''}" onclick="likePost('${p.id}',this)">
-        ${isLiked?'❤️':'🤍'} <span>${likedBy.length}</span>
-      </button>
-      <button class="action-btn" onclick="toggleComments('${p.id}')">
-        💬 <span id="ccount-${p.id}">Commenter</span>
-      </button>
-      ${p.profiles?.id&&p.profiles.id!==currentUser?.id?`<button class="action-btn" onclick="openConvById('${p.profiles.id}','${username}')">✉️ Message</button>`:''}
-    </div>
-      <div class="comment-input-wrap">
-        <div class="comment-my-avatar">${currentProfile?(currentProfile.username||'?')[0].toUpperCase():'?'}</div>
-        <input class="comment-input" id="comment-input-${p.id}" placeholder="Écrire un commentaire..." onkeydown="if(event.key==='Enter')addComment('${p.id}')"/>
-        <button class="comment-send" onclick="addComment('${p.id}')">➤</button>
-      </div>
-    </div>
-  </div>`;
-}
-
-async function toggleComments(postId){
-  const section=document.getElementById('comments-'+postId);
-  if(section.style.display==='none'){
-    section.style.display='block';
-    await loadComments(postId);
-  } else {
-    section.style.display='none';
-  }
-}
-
-async function loadComments(postId){
-  const el=document.getElementById('comments-list-'+postId);
-  el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px">Chargement...</div>';
-  
-  const {data,error}=await sb.from('comments')
-    .select('*')
-    .eq('post_id',postId)
-    .is('parent_id',null)
-    .order('created_at',{ascending:true});
-
-  if(error){
-    el.innerHTML='<div style="color:#e74c3c;font-size:12px;padding:4px">Erreur: '+error.message+'</div>';
-    return;
-  }
-
-  if(!data||data.length===0){
-    el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px 0">Aucun commentaire. Soyez le premier ! 😊</div>';
-    const ccount=document.getElementById('ccount-'+postId);
-    if(ccount)ccount.textContent='Commenter';
-    return;
-  }
-
-  // Load profiles for comments
-  const userIds=[...new Set(data.map(c=>c.user_id))];
-  const {data:profiles}=await sb.from('profiles').select('id,username,avatar_url').in('id',userIds);
-  const profileMap={};
-  (profiles||[]).forEach(p=>profileMap[p.id]=p);
-
-  const ccount=document.getElementById('ccount-'+postId);
-  if(ccount)ccount.textContent=data.length+' commentaire'+(data.length>1?'s':'');
-
-  // Load all replies
-  const {data:replies}=await sb.from('comments')
-    .select('*')
-    .eq('post_id',postId)
-    .not('parent_id','is',null)
-    .order('created_at',{ascending:true});
-
-  const replyUserIds=[...new Set((replies||[]).map(r=>r.user_id))];
-  let replyProfileMap={};
-  if(replyUserIds.length>0){
-    const {data:rProfiles}=await sb.from('profiles').select('id,username,avatar_url').in('id',replyUserIds);
-    (rProfiles||[]).forEach(p=>replyProfileMap[p.id]=p);
-  }
-
-  const repliesByParent={};
-  (replies||[]).forEach(r=>{
-    if(!repliesByParent[r.parent_id])repliesByParent[r.parent_id]=[];
-    repliesByParent[r.parent_id].push(r);
-  });
-
-  el.innerHTML=data.map(c=>{
-    const prof=profileMap[c.user_id]||{};
-    const name=prof.username||'Utilisateur';
-    const avatarContent=prof.avatar_url?`<img src="${prof.avatar_url}" style="width:100%;height:100%;object-fit:cover;border-radius:50%"/>`:`<span>${name[0].toUpperCase()}</span>`;
-    const likedBy=c.liked_by||[];
+  const filtered=data.filter(p=>!blockedUsers.includes(p.user_id));
+  const COLORS={vente:'#2ecc71',service:'#3498db',info:'#e67e22',immobilier:'#9b59b6'};
+  const LABELS={vente:'🛒 Vente',service:'🔧 Service',info:'📢 Info',immobilier:'🏠 Immo'};
+  document.getElementById('posts-container').innerHTML=filtered.map(p=>{
+    const color=COLORS[p.category]||'#00b4d8';
+    const username=p.profiles?.username||'Utilisateur';
+    const location=p.profiles?.location||'DIANA';
+    const time=timeAgo(p.created_at);
+    const likedBy=p.liked_by||[];
     const isLiked=currentUser&&likedBy.includes(currentUser.id);
-    const commentReplies=repliesByParent[c.id]||[];
-
-    const repliesHtml=commentReplies.map(r=>{
-      const rProf=replyProfileMap[r.user_id]||{};
-      const rName=rProf.username||'Utilisateur';
-      const rLikedBy=r.liked_by||[];
-      const rIsLiked=currentUser&&rLikedBy.includes(currentUser.id);
-      return `<div class="reply-item">
-        <div class="reply-avatar">${rName[0].toUpperCase()}</div>
-        <div class="reply-bubble">
-          <div class="reply-name">${rName}</div>
-          <div class="reply-text">${r.content}</div>
-          <div class="reply-actions">
-            <button class="reply-action ${rIsLiked?'liked':''}" onclick="likeComment('${r.id}','${postId}',this)">
-              ${rIsLiked?'❤️':'🤍'} ${rLikedBy.length>0?rLikedBy.length:''}
-            </button>
-            <span style="color:#4a6fa8;font-size:10px">${timeAgo(r.created_at)}</span>
-          </div>
+    const isMe=p.user_id===currentUser?.id;
+    const avatarContent=p.profiles?.avatar_url?`<img src="${p.profiles.avatar_url}"/>`:`${username[0].toUpperCase()}`;
+    return `<div class="card" id="post-${p.id}">
+      <div class="card-top">
+        <div class="avatar" onclick="openUserModal('${p.profiles?.id||''}','${username}','${p.profiles?.location||''}')">${avatarContent}</div>
+        <div style="flex:1">
+          <div class="user-name" onclick="openUserModal('${p.profiles?.id||''}','${username}','${p.profiles?.location||''}')">${username}</div>
+          <div class="user-meta">📍 ${location} · ${time}</div>
         </div>
-      </div>`;
-    }).join('');
-
-    return `<div class="comment-item" id="comment-${c.id}">
-      <div class="comment-avatar">${avatarContent}</div>
-      <div class="comment-body">
-        <div class="comment-bubble">
-          <div class="comment-name">${name}</div>
-          <div class="comment-text">${c.content}</div>
-        </div>
-        <div class="comment-actions">
-          <button class="comment-action ${isLiked?'liked':''}" onclick="likeComment('${c.id}','${postId}',this)">
-            ${isLiked?'❤️':'🤍'} ${likedBy.length>0?likedBy.length+' J\'aime':'J\'aime'}
-          </button>
-          <button class="comment-action" onclick="toggleReplyInput('${c.id}','${postId}')">Répondre</button>
-          <span class="comment-time">${timeAgo(c.created_at)}</span>
-        </div>
-        ${repliesHtml?`<div class="replies-wrap" id="replies-${c.id}">${repliesHtml}</div>`:'<div class="replies-wrap" id="replies-'+c.id+'"></div>'}
-        <div id="reply-input-${c.id}" style="display:none">
-          <div class="reply-input-wrap">
-            <input class="reply-input" id="reply-field-${c.id}" placeholder="Répondre à ${name}..." onkeydown="if(event.key==='Enter')addReply('${c.id}','${postId}')"/>
-            <button class="reply-send" onclick="addReply('${c.id}','${postId}')">➤</button>
-          </div>
+        ${isMe?`<button class="action-btn delete" onclick="deletePost('${p.id}')">🗑️</button>`:''}
+      </div>
+      <div style="display:inline-block;background:${color}22;color:${color};border:1px solid ${color}44;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-bottom:6px">${LABELS[p.category]||p.category}</div>
+      <div class="post-text">${p.content}</div>
+      ${p.image_url?`<img src="${p.image_url}" class="post-img"/>`:''}
+      <div class="actions">
+        <button class="action-btn ${isLiked?'liked':''}" onclick="likePost('${p.id}',this)">${isLiked?'❤️':'🤍'} ${likedBy.length}</button>
+        <button class="action-btn" onclick="toggleComments('${p.id}')">💬 Commenter</button>
+        ${!isMe?`<button class="action-btn" onclick="openUserModal('${p.profiles?.id||''}','${username}','${p.profiles?.location||''}')">👤</button>`:''}
+      </div>
+      <div class="comments-section" id="comments-${p.id}" style="display:none">
+        <div id="comments-list-${p.id}"><div class="loading" style="padding:10px">Chargement...</div></div>
+        <div class="comment-input-wrap">
+          <input class="comment-input" id="comment-input-${p.id}" placeholder="Écrire un commentaire..."/>
+          <button class="comment-send" onclick="addComment('${p.id}')">➤</button>
         </div>
       </div>
     </div>`;
   }).join('');
 }
 
-function toggleReplyInput(commentId,postId){
-  const wrap=document.getElementById('reply-input-'+commentId);
-  if(wrap.style.display==='none'){
-    wrap.style.display='block';
-    document.getElementById('reply-field-'+commentId)?.focus();
-  } else {
-    wrap.style.display='none';
-  }
-}
-
-async function addReply(commentId,postId){
-  const input=document.getElementById('reply-field-'+commentId);
-  const content=input.value.trim();
-  if(!content||!currentUser)return;
-  input.value='';
-  const {error}=await sb.from('comments').insert({
-    post_id:postId,
-    user_id:currentUser.id,
-    content,
-    parent_id:commentId,
-    liked_by:[]
-  });
-  if(!error){
-    document.getElementById('reply-input-'+commentId).style.display='none';
-    await loadComments(postId);
-  }
-}
-
-async function addComment(postId){
-  const input=document.getElementById('comment-input-'+postId);
-  const content=input.value.trim();
-  if(!content||!currentUser)return;
-  input.value='';
-  const {error}=await sb.from('comments').insert({
-    post_id:postId,
-    user_id:currentUser.id,
-    content,
-    liked_by:[],
-    parent_id:null
-  });
-  if(error){
-    alert('Erreur: '+error.message);
-    return;
-  }
-  await loadComments(postId);
-}
-
-async function likeComment(commentId,postId,btn){
-  if(!currentUser)return;
-  const {data:comment}=await sb.from('comments').select('liked_by').eq('id',commentId).single();
-  let likedBy=comment?.liked_by||[];
-  const uid=currentUser.id;
-  likedBy=likedBy.includes(uid)?likedBy.filter(x=>x!==uid):[...likedBy,uid];
-  await sb.from('comments').update({liked_by:likedBy}).eq('id',commentId);
-  await loadComments(postId);
-}
-
-async function deletePost(id){
-  if(!confirm('Supprimer cette publication ?'))return;
-  await sb.from('comments').delete().eq('post_id',id);
-  await sb.from('posts').delete().eq('id',id).eq('user_id',currentUser.id);
-  document.getElementById('post-'+id)?.remove();
-}
-
 function filterCat(btn,cat){
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');currentCat=cat;loadPosts();
 }
-
 function togglePostForm(){
   const f=document.getElementById('post-form-wrap');
   f.style.display=f.style.display==='none'?'block':'none';
 }
-
 function previewPhoto(input){
   photoFile=input.files[0];
   if(photoFile){
     const reader=new FileReader();
-    reader.onload=e=>{
-      document.getElementById('img-preview').src=e.target.result;
-      document.getElementById('img-preview-wrap').style.display='block';
-    };
+    reader.onload=e=>{document.getElementById('img-preview').src=e.target.result;document.getElementById('img-preview-wrap').style.display='block';};
     reader.readAsDataURL(photoFile);
   }
 }
-
-function removePhoto(){
-  photoFile=null;
-  document.getElementById('img-preview-wrap').style.display='none';
-  document.getElementById('photo-input').value='';
-}
-
+function removePhoto(){photoFile=null;document.getElementById('img-preview-wrap').style.display='none';document.getElementById('photo-input').value='';}
 async function publishPost(){
   const content=document.getElementById('post-input').value.trim();
   const category=document.getElementById('post-cat').value;
@@ -569,25 +460,226 @@ async function publishPost(){
     const ext=photoFile.name.split('.').pop();
     const path=`posts/${currentUser.id}/${Date.now()}.${ext}`;
     const {error:upErr}=await sb.storage.from('diana-media').upload(path,photoFile,{upsert:true});
-    if(!upErr){const {data:urlData}=sb.storage.from('diana-media').getPublicUrl(path);image_url=urlData.publicUrl;}
+    if(!upErr){const {data}=sb.storage.from('diana-media').getPublicUrl(path);image_url=data.publicUrl;}
   }
   await sb.from('posts').insert({user_id:currentUser.id,content,category,image_url,liked_by:[]});
-  document.getElementById('post-input').value='';
-  removePhoto();togglePostForm();loadPosts();
+  document.getElementById('post-input').value='';removePhoto();togglePostForm();loadPosts();
 }
-
+async function deletePost(id){
+  if(!confirm('Supprimer cette publication ?'))return;
+  await sb.from('posts').delete().eq('id',id).eq('user_id',currentUser.id);
+  document.getElementById('post-'+id)?.remove();
+  loadMyPosts();
+}
 async function likePost(id,btn){
   if(!currentUser)return;
   const {data:post}=await sb.from('posts').select('liked_by').eq('id',id).single();
   let likedBy=post?.liked_by||[];
   const uid=currentUser.id;
-  likedBy=likedBy.includes(uid)?likedBy.filter(x=>x!==uid):[...likedBy,uid];
+  if(likedBy.includes(uid)){likedBy=likedBy.filter(x=>x!==uid);}else{likedBy=[...likedBy,uid];}
   await sb.from('posts').update({liked_by:likedBy}).eq('id',id);
   const isLiked=likedBy.includes(uid);
   btn.className='action-btn'+(isLiked?' liked':'');
-  btn.innerHTML=(isLiked?'❤️':'🤍')+' <span>'+likedBy.length+'</span>';
+  btn.innerHTML=(isLiked?'❤️':'🤍')+' '+likedBy.length;
 }
 
+// ---- COMMENTAIRES ----
+async function toggleComments(postId){
+  const section=document.getElementById('comments-'+postId);
+  if(section.style.display==='none'){
+    section.style.display='block';
+    await loadComments(postId);
+  } else {section.style.display='none';}
+}
+async function loadComments(postId){
+  const {data}=await sb.from('comments').select('*,profiles(username,avatar_url)').eq('post_id',postId).order('created_at',{ascending:true});
+  const el=document.getElementById('comments-list-'+postId);
+  if(!data||data.length===0){el.innerHTML='<div style="color:#6a8fa8;font-size:12px;padding:4px">Aucun commentaire.</div>';return;}
+  el.innerHTML=data.map(c=>{
+    const isMe=c.user_id===currentUser?.id;
+    return `<div class="comment">
+      <div class="comment-avatar">${(c.profiles?.username||'?')[0].toUpperCase()}</div>
+      <div class="comment-content" style="flex:1">
+        <div class="comment-user">${c.profiles?.username||'?'}</div>
+        <div class="comment-text">${c.content}</div>
+      </div>
+      ${isMe?`<button onclick="deleteComment('${c.id}','${postId}')" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:12px">🗑️</button>`:''}
+    </div>`;
+  }).join('');
+}
+async function addComment(postId){
+  const input=document.getElementById('comment-input-'+postId);
+  const content=input.value.trim();
+  if(!content)return;
+  input.value='';
+  await sb.from('comments').insert({post_id:postId,user_id:currentUser.id,content});
+  // Notification
+  const {data:post}=await sb.from('posts').select('user_id').eq('id',postId).single();
+  if(post&&post.user_id!==currentUser.id){
+    await sb.from('notifications').insert({user_id:post.user_id,type:'comment',from_user_id:currentUser.id,post_id:postId,message:`${currentProfile?.username||'Quelqu\'un'} a commenté votre publication`});
+  }
+  await loadComments(postId);
+}
+async function deleteComment(id,postId){
+  await sb.from('comments').delete().eq('id',id).eq('user_id',currentUser.id);
+  await loadComments(postId);
+}
+
+// ---- MES PUBLICATIONS ----
+async function loadMyPosts(){
+  const {data}=await sb.from('posts').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});
+  const el=document.getElementById('my-posts-list');
+  if(!data||data.length===0){el.innerHTML='<div class="empty" style="padding:16px">Aucune publication</div>';return;}
+  el.innerHTML=data.map(p=>`
+    <div class="card" style="margin:0 0 8px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div class="post-text" style="margin:0;flex:1">${p.content}</div>
+        <button class="action-btn delete" onclick="deletePost('${p.id}')">🗑️</button>
+      </div>
+      <div style="font-size:11px;color:#6a8fa8;margin-top:4px">${timeAgo(p.created_at)}</div>
+    </div>`).join('');
+}
+
+// ---- MESSAGES ----
+async function loadConversations(){
+  const {data}=await sb.from('messages')
+    .select('*,sender:profiles!sender_id(id,username),receiver:profiles!receiver_id(id,username)')
+    .or(`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`)
+    .order('created_at',{ascending:false});
+  if(!data||data.length===0){
+    document.getElementById('conversations-list').innerHTML='<div class="empty">💬 Aucun message encore.</div>';return;
+  }
+  const seen={};const convs=[];
+  data.forEach(m=>{
+    const isMe=m.sender_id===currentUser.id;
+    const other=isMe?m.receiver:m.sender;
+    const otherId=isMe?m.receiver_id:m.sender_id;
+    if(!seen[otherId]&&!blockedUsers.includes(otherId)){seen[otherId]=true;convs.push({user:other,userId:otherId,lastMsg:m.content});}
+  });
+  if(convs.length===0){document.getElementById('conversations-list').innerHTML='<div class="empty">💬 Aucun message.</div>';return;}
+  document.getElementById('conversations-list').innerHTML=convs.map(c=>`
+    <div class="msg-item" onclick="openConvById('${c.userId}','${c.user?.username||'?'}')">
+      <div class="msg-avatar">${(c.user?.username||'?')[0].toUpperCase()}</div>
+      <div style="flex:1"><div class="msg-name">${c.user?.username||'Utilisateur'}</div><div class="msg-preview">${c.lastMsg}</div></div>
+      <button onclick="event.stopPropagation();deleteConv('${c.userId}')" style="background:none;border:none;color:#e74c3c;cursor:pointer;font-size:16px">🗑️</button>
+    </div>`).join('');
+}
+async function deleteConv(otherId){
+  if(!confirm('Supprimer cette conversation ?'))return;
+  await sb.from('messages').delete().eq('sender_id',currentUser.id).eq('receiver_id',otherId);
+  await sb.from('messages').delete().eq('sender_id',otherId).eq('receiver_id',currentUser.id);
+  loadConversations();
+}
+async function openConvById(userId,username){
+  if(!userId||userId===currentUser?.id)return;
+  currentConvUser={id:userId,username};
+  showTab('messages');
+  document.getElementById('msg-list-view').style.display='none';
+  document.getElementById('conv-view').style.display='flex';
+  document.getElementById('conv-back-btn').textContent=`← ${username}`;
+  await loadConvMessages();
+}
+async function loadConvMessages(){
+  const {data}=await sb.from('messages').select('*')
+    .or(`and(sender_id.eq.${currentUser.id},receiver_id.eq.${currentConvUser.id}),and(sender_id.eq.${currentConvUser.id},receiver_id.eq.${currentUser.id})`)
+    .order('created_at',{ascending:true});
+  const el=document.getElementById('conv-messages');
+  el.innerHTML=(data||[]).map(m=>`
+    <div style="display:flex;flex-direction:column;align-items:${m.sender_id===currentUser.id?'flex-end':'flex-start'}">
+      <div class="bubble ${m.sender_id===currentUser.id?'user':'ai'}" style="max-width:75%">${m.content}</div>
+      ${m.sender_id===currentUser.id?`<button onclick="deleteMsg('${m.id}')" style="background:none;border:none;color:#e74c3c;font-size:11px;cursor:pointer;margin-top:2px">🗑️ Supprimer</button>`:''}
+    </div>`).join('');
+  el.scrollTop=el.scrollHeight;
+}
+async function sendMsg(){
+  const input=document.getElementById('msg-input');
+  const content=input.value.trim();
+  if(!content||!currentConvUser)return;
+  input.value='';
+  await sb.from('messages').insert({sender_id:currentUser.id,receiver_id:currentConvUser.id,content});
+  // Notification
+  await sb.from('notifications').insert({user_id:currentConvUser.id,type:'message',from_user_id:currentUser.id,message:`${currentProfile?.username||'Quelqu\'un'} vous a envoyé un message`});
+  await loadConvMessages();
+}
+async function deleteMsg(id){
+  await sb.from('messages').delete().eq('id',id).eq('sender_id',currentUser.id);
+  await loadConvMessages();
+}
+function backToMessages(){
+  document.getElementById('msg-list-view').style.display='block';
+  document.getElementById('conv-view').style.display='none';
+  loadConversations();
+}
+
+// ---- FOLLOW / UNFOLLOW ----
+async function toggleFollow(){
+  if(!modalUserId||modalUserId===currentUser.id)return;
+  const {data:existing}=await sb.from('follows').select('*').eq('follower_id',currentUser.id).eq('following_id',modalUserId).single();
+  if(existing){
+    await sb.from('follows').delete().eq('follower_id',currentUser.id).eq('following_id',modalUserId);
+    document.getElementById('modal-follow-btn').textContent='➕ Suivre';
+    document.getElementById('modal-follow-btn').className='follow-btn';
+  } else {
+    await sb.from('follows').insert({follower_id:currentUser.id,following_id:modalUserId});
+    await sb.from('notifications').insert({user_id:modalUserId,type:'follow',from_user_id:currentUser.id,message:`${currentProfile?.username||'Quelqu\'un'} vous suit maintenant`});
+    document.getElementById('modal-follow-btn').textContent='✓ Abonné';
+    document.getElementById('modal-follow-btn').className='unfollow-btn';
+  }
+  loadProfile();
+}
+
+// ---- BLOQUER ----
+async function blockUser(){
+  if(!modalUserId||!confirm('Bloquer cet utilisateur ?'))return;
+  await sb.from('blocks').upsert({blocker_id:currentUser.id,blocked_id:modalUserId});
+  blockedUsers.push(modalUserId);
+  closeModal();
+  loadPosts();
+}
+
+// ---- MODAL UTILISATEUR ----
+async function openUserModal(userId,username,location){
+  if(!userId||userId===currentUser?.id)return;
+  modalUserId=userId;
+  document.getElementById('modal-username').textContent=username;
+  document.getElementById('modal-location').textContent='📍 '+(location||'Région DIANA');
+  // Vérifier si on suit déjà
+  const {data}=await sb.from('follows').select('*').eq('follower_id',currentUser.id).eq('following_id',userId).single();
+  const btn=document.getElementById('modal-follow-btn');
+  if(data){btn.textContent='✓ Abonné';btn.className='unfollow-btn';}
+  else{btn.textContent='➕ Suivre';btn.className='follow-btn';}
+  document.getElementById('user-modal').style.display='flex';
+}
+function closeModal(){document.getElementById('user-modal').style.display='none';modalUserId=null;}
+function openMsgFromModal(){
+  const username=document.getElementById('modal-username').textContent;
+  closeModal();
+  openConvById(modalUserId,username);
+}
+
+// ---- NOTIFICATIONS ----
+async function loadNotifCount(){
+  const {count}=await sb.from('notifications').select('*',{count:'exact'}).eq('user_id',currentUser.id).eq('read',false);
+  const badge=document.getElementById('notif-count');
+  if(count>0){badge.textContent=count;badge.style.display='flex';}
+  else{badge.style.display='none';}
+}
+async function loadNotifs(){
+  const {data}=await sb.from('notifications').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(30);
+  // Marquer comme lues
+  await sb.from('notifications').update({read:true}).eq('user_id',currentUser.id).eq('read',false);
+  document.getElementById('notif-count').style.display='none';
+  if(!data||data.length===0){document.getElementById('notifs-list').innerHTML='<div class="empty">🔔 Aucune notification</div>';return;}
+  const ICONS={comment:'💬',message:'✉️',follow:'👤',like:'❤️'};
+  document.getElementById('notifs-list').innerHTML=data.map(n=>`
+    <div class="notif-item ${n.read?'':'unread'}">
+      <span style="font-size:18px;margin-right:8px">${ICONS[n.type]||'🔔'}</span>
+      <span>${n.message}</span>
+      <div style="font-size:11px;color:#6a8fa8;margin-top:4px">${timeAgo(n.created_at)}</div>
+    </div>`).join('');
+}
+
+// ---- PROFIL ----
 async function uploadAvatar(input){
   const file=input.files[0];
   if(!file||!currentUser)return;
@@ -600,7 +692,6 @@ async function uploadAvatar(input){
     await loadProfile();
   }
 }
-
 function toggleEditForm(){
   const f=document.getElementById('edit-form');
   f.style.display=f.style.display==='none'||f.style.display===''?'block':'none';
@@ -609,7 +700,6 @@ function toggleEditForm(){
     document.getElementById('edit-location').value=currentProfile.location||'';
   }
 }
-
 async function saveProfile(){
   const username=document.getElementById('edit-username').value.trim();
   const location=document.getElementById('edit-location').value.trim();
@@ -619,121 +709,73 @@ async function saveProfile(){
   document.getElementById('edit-form').style.display='none';
 }
 
-// ========== MESSAGES ==========
-async function loadConversations(){
-  const {data}=await sb.from('messages')
-    .select('*,sender:profiles!sender_id(id,username),receiver:profiles!receiver_id(id,username)')
-    .or(`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`)
-    .order('created_at',{ascending:false});
-  if(!data||data.length===0){
-    document.getElementById('conversations-list').innerHTML='<div class="empty">💬 Aucun message encore.<br>Envoyez un message depuis une publication !</div>';
-    return;
-  }
-  const seen={};const convs=[];
-  data.forEach(m=>{
-    const isMe=m.sender_id===currentUser.id;
-    const other=isMe?m.receiver:m.sender;
-    const otherId=isMe?m.receiver_id:m.sender_id;
-    if(!seen[otherId]){seen[otherId]=true;convs.push({user:other,userId:otherId,lastMsg:m.content,time:m.created_at});}
-  });
-  document.getElementById('conversations-list').innerHTML=convs.map(c=>`
-    <div class="msg-item" onclick="openConvById('${c.userId}','${c.user?.username||'?'}')">
-      <div class="msg-avatar">${(c.user?.username||'?')[0].toUpperCase()}</div>
-      <div style="flex:1;min-width:0">
-        <div class="msg-name">${c.user?.username||'Utilisateur'}</div>
-        <div class="msg-preview">${c.lastMsg}</div>
-      </div>
-      <div class="msg-time">${timeAgo(c.time)}</div>
-    </div>`).join('');
-}
-
-async function openConvById(userId,username){
-  if(!userId||userId===currentUser?.id)return;
-  currentConvUser={id:userId,username};
-  showTab('messages');
-  document.getElementById('msg-list-view').style.display='none';
-  document.getElementById('conv-view').style.display='flex';
-  document.getElementById('conv-title').textContent=username;
-  document.getElementById('conv-avatar').textContent=username[0].toUpperCase();
-  await loadConvMessages();
-}
-
-async function loadConvMessages(){
-  const {data}=await sb.from('messages').select('*')
-    .or(`and(sender_id.eq.${currentUser.id},receiver_id.eq.${currentConvUser.id}),and(sender_id.eq.${currentConvUser.id},receiver_id.eq.${currentUser.id})`)
-    .order('created_at',{ascending:true});
-  const el=document.getElementById('conv-messages');
-  if(!data||data.length===0){
-    el.innerHTML='<div style="text-align:center;color:#6a8fa8;font-size:13px;margin-top:20px">Début de la conversation 👋</div>';
-    return;
-  }
-  el.innerHTML=data.map(m=>`
-    <div style="display:flex;justify-content:${m.sender_id===currentUser.id?'flex-end':'flex-start'}">
-      <div class="bubble ${m.sender_id===currentUser.id?'user':'ai'}" style="max-width:75%">
-        ${m.content}
-        <div style="font-size:10px;opacity:.6;margin-top:4px;text-align:right">${timeAgo(m.created_at)}</div>
-      </div>
-    </div>`).join('');
-  el.scrollTop=el.scrollHeight;
-}
-
-async function sendMsg(){
-  const input=document.getElementById('msg-input');
-  const content=input.value.trim();
-  if(!content||!currentConvUser)return;
-  input.value='';
-  await sb.from('messages').insert({sender_id:currentUser.id,receiver_id:currentConvUser.id,content});
-  await loadConvMessages();
-}
-
-function backToMessages(){
-  document.getElementById('msg-list-view').style.display='block';
-  document.getElementById('conv-view').style.display='none';
-  loadConversations();
-}
-
-// ========== AI ==========
+// ---- AI CHAT ----
 async function sendAI(){
   const input=document.getElementById('chat-input');
   const msg=input.value.trim();
   if(!msg)return;
   input.value='';
   addBubble('user',msg);
-  aiHistory.push({role:'user',parts:[{text:msg}]});
+  aiHistory.push({role:'user',content:msg});
   const typingId='t'+Date.now();
-  document.getElementById('chat-messages').innerHTML+=`<div class="bubble ai" id="${typingId}"><div class="bubble-name">✨ DIANA AI</div><div class="typing"><span></span><span></span><span></span></div></div>`;
+  document.getElementById('chat-messages').innerHTML+=`<div class="bubble ai" id="${typingId}"><div class="bubble-name">🤖 DIANA AI</div><div class="typing"><span></span><span></span><span></span></div></div>`;
   scrollChat();
   try{
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','anthropic-dangerous-allow-browser':'true'},
       body:JSON.stringify({
-        system_instruction:{parts:[{text:`Tu es DIANA AI, assistant bilingue pour la région DIANA à Madagascar (Antsiranana/Diego-Suarez, Nosy Be, Ambanja, Ambilobe). RÈGLE: Si l'utilisateur écrit en malagasy, réponds UNIQUEMENT en malagasy. Si en français, réponds en français. Tu aides avec: agriculture locale, santé, commerce, services, culture malgache. Sois chaleureux avec des emojis.`}]},
-        contents:aiHistory.slice(-10)
+        model:'claude-sonnet-4-20250514',max_tokens:800,
+        system:`Tu es DIANA AI, assistant bilingue français-malagasy pour la région DIANA à Madagascar (Antsiranana/Diego-Suarez, Nosy Be, Ambanja, Ambilobe). Réponds dans la même langue que l'utilisateur. Tu aides avec agriculture, santé, commerce, services locaux, culture malgache. Sois chaleureux avec des emojis.`,
+        messages:aiHistory.slice(-10)
       })
     });
     const data=await res.json();
     document.getElementById(typingId)?.remove();
-    const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||'Azoko... Misy olana kely. Avereno azafady ! 😊';
-    aiHistory.push({role:'model',parts:[{text:reply}]});
+    const reply=data.content?.[0]?.text||'Désolé, essayez encore !';
+    aiHistory.push({role:'assistant',content:reply});
     addBubble('ai',reply);
   }catch(e){
     document.getElementById(typingId)?.remove();
-    addBubble('ai','😊 Misy olana kely. Avereno azafady !');
+    addBubble('ai','😊 Je suis là pour vous aider ! Posez votre question.');
   }
 }
-
 function addBubble(role,text){
   const msgs=document.getElementById('chat-messages');
   const div=document.createElement('div');
   div.className=`bubble ${role}`;
   const formatted=text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  div.innerHTML=role==='ai'?`<div class="bubble-name">✨ DIANA AI</div>${formatted}`:formatted;
+  div.innerHTML=role==='ai'?`<div class="bubble-name">🤖 DIANA AI</div>${formatted}`:formatted;
   msgs.appendChild(div);scrollChat();
 }
+function scrollChat(){const msgs=document.getElementById('chat-messages');msgs.scrollTop=msgs.scrollHeight;}
 
-function scrollChat(){document.getElementById('chat-messages').scrollTop=document.getElementById('chat-messages').scrollHeight;}
+// ---- AIDE ----
+function loadHelp(){
+  const faqs=[
+    {q:'Comment créer une publication ?',a:'Allez sur le Fil, appuyez sur le bouton ✏️ en bas à droite, écrivez votre message, choisissez une catégorie et appuyez sur Publier.'},
+    {q:'Comment envoyer un message ?',a:'Cliquez sur le nom ou l\'avatar d\'un utilisateur dans le fil, puis appuyez sur "💬 Message".'},
+    {q:'Comment suivre quelqu\'un ?',a:'Cliquez sur le nom ou l\'avatar d\'un utilisateur, puis appuyez sur "➕ Suivre".'},
+    {q:'Comment changer ma photo de profil ?',a:'Allez dans Profil, appuyez sur votre photo/avatar en haut, choisissez une photo depuis votre téléphone.'},
+    {q:'Comment supprimer une publication ?',a:'Sur vos propres publications, appuyez sur l\'icône 🗑️ en haut à droite de la publication.'},
+    {q:'Comment bloquer quelqu\'un ?',a:'Cliquez sur le nom d\'un utilisateur, puis appuyez sur "🚫 Bloquer". Vous ne verrez plus ses publications.'},
+    {q:'Comment utiliser DIANA AI ?',a:'Appuyez sur l\'onglet 🤖 AI en bas. Vous pouvez poser des questions en français ou en malagasy.'},
+    {q:'J\'ai oublié mon mot de passe',a:'Pour l\'instant, contactez l\'administrateur de l\'app. Une fonction de réinitialisation sera ajoutée prochainement.'},
+    {q:'Comment vendre sur le Marché ?',a:'Créez une publication dans le Fil avec la catégorie 🛒 Vente. Les acheteurs pourront vous contacter par message.'},
+    {q:'L\'app ne fonctionne pas bien',a:'Essayez de vider le cache de Chrome et rechargez la page. Si le problème persiste, contactez l\'administrateur.'},
+  ];
+  document.getElementById('help-content').innerHTML=faqs.map((f,i)=>`
+    <div class="help-item" onclick="toggleHelp(${i})">
+      <div class="help-title">❓ ${f.q}</div>
+      <div class="help-answer" id="help-${i}">✅ ${f.a}</div>
+    </div>`).join('');
+}
+function toggleHelp(i){
+  const el=document.getElementById('help-'+i);
+  el.style.display=el.style.display==='none'||el.style.display===''?'block':'none';
+}
 
+// ---- UTILS ----
 function timeAgo(date){
   const diff=Math.floor((new Date()-new Date(date))/1000);
   if(diff<60)return 'à l\'instant';
@@ -742,22 +784,7 @@ function timeAgo(date){
   return `il y a ${Math.floor(diff/86400)}j`;
 }
 
-
-async function sharePost(id, text){
-  if(navigator.share){
-    await navigator.share({
-      title:'DIANA Connect',
-      text:text,
-      url:window.location.href
-    });
-  } else {
-    await navigator.clipboard.writeText(window.location.href);
-    alert('Lien copié ! 📋');
-  }
-}
-
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/diana-connect/sw.js');}
 checkAuth();
 </script>
 </body>
-  </html>
+                                                                                  </html>
