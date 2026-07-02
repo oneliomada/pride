@@ -1,10 +1,12 @@
 // ✅ Changer ce numéro à chaque mise à jour du site
-const CACHE = 'diana-v' + Date.now();
+const CACHE = 'pride-v' + Date.now();
 
 const FILES = [
-  '/diana-connect/',
-  '/diana-connect/index.html',
-  '/diana-connect/manifest.json'
+  '/pride/',
+  '/pride/index.html',
+  '/pride/manifest.json',
+  '/pride/icon-192.png',
+  '/pride/icon-512.png'
 ];
 
 // Installation : mise en cache des fichiers
